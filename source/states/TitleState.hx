@@ -56,7 +56,7 @@ class TitleState extends MusicBeatState
 
 	var wackyImage:FlxSprite;
 
-	#if TITLE_SCREEN_EASTER_EGG
+	#if PSYCH_TITLE_EASTER_EGG
 	final easterEggKeys:Array<String> = [
 		'SHADOW', 'RIVEREN', 'BBPANZU', 'PESSY'
 	];
@@ -124,7 +124,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 
 		loadJsonData();
-		#if TITLE_SCREEN_EASTER_EGG easterEggData(); #end
+		#if PSYCH_TITLE_EASTER_EGG easterEggData(); #end
 		Conductor.bpm = musicBPM;
 
 		logoBl = new FlxSprite(logoPosition.x, logoPosition.y);
@@ -392,7 +392,7 @@ class TitleState extends MusicBeatState
 				});
 				// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 			}
-			#if TITLE_SCREEN_EASTER_EGG
+			#if PSYCH_TITLE_EASTER_EGG
 			else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 			{
 				var keyPressed:FlxKey = FlxG.keys.firstJustPressed();
@@ -566,7 +566,7 @@ class TitleState extends MusicBeatState
 	{
 		if (!skippedIntro)
 		{
-			#if TITLE_SCREEN_EASTER_EGG
+			#if PSYCH_TITLE_EASTER_EGG
 			if (playJingle) //Ignore deez
 			{
 				playJingle = false;
@@ -632,7 +632,7 @@ class TitleState extends MusicBeatState
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';
 				easteregg = easteregg.toUpperCase();
-				#if TITLE_SCREEN_EASTER_EGG
+				#if PSYCH_TITLE_EASTER_EGG
 				if(easteregg == 'SHADOW')
 				{
 					FlxG.sound.music.fadeOut();
