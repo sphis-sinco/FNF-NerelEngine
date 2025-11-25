@@ -1,11 +1,15 @@
 package neral;
 
+import states.StoryMenuState;
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
 import psychlua.HScript.HScriptInfos;
 #end
 import backend.Highscore;
 import states.TitleState;
+import states.FlashingState;
+import states.FreeplayState;
+import states.editors.ChartingState;
 import openfl.Lib;
 
 class InitState extends MusicBeatState
@@ -123,7 +127,39 @@ class InitState extends MusicBeatState
 		DiscordClient.prepare();
 		#end
 
-		FlxG.switchState(() -> new TitleState());
+		if (!TitleState.initialized)
+		{
+			if (FlxG.save.data != null && FlxG.save.data.fullscreen)
+			{
+				FlxG.fullscreen = FlxG.save.data.fullscreen;
+				// trace('LOADED FULLSCREEN SETTING!!');
+			}
+			persistentUpdate = true;
+			persistentDraw = true;
+
+			ClientPrefs.loadPrefs();
+			Language.reloadPhrases();
+		}
+
+		if (FlxG.save.data.weekCompleted != null)
+		{
+			StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
+		}
+
+		#if FREEPLAY
+		MusicBeatState.switchState(new FreeplayState());
+		#elseif CHARTING
+		MusicBeatState.switchState(new ChartingState());
+		#else
+		if (FlxG.save.data.flashing == null && !FlashingState.leftState)
+		{
+			FlxTransitionableState.skipNextTransIn = true;
+			FlxTransitionableState.skipNextTransOut = true;
+			MusicBeatState.switchState(new FlashingState());
+		}
+		else
+			MusicBeatState.switchState(new TitleState());
+		#end
 	}
 
 	override function update(elapsed:Float)
