@@ -1,6 +1,5 @@
 package neral;
 
-import neral.AppSettings.AppSettingsClass;
 import states.StoryMenuState;
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
@@ -9,9 +8,6 @@ import psychlua.HScript.HScriptInfos;
 import backend.Highscore;
 import states.TitleState;
 import states.FlashingState;
-import states.FreeplayState;
-import states.editors.ChartingState;
-import openfl.Lib;
 
 class InitState extends MusicBeatState
 {
@@ -108,7 +104,7 @@ class InitState extends MusicBeatState
 
 		#if (linux || mac) // fix the app icon not showing up on the Linux Panel / Mac Dock
 		var icon = lime.graphics.Image.fromFile("icon.png");
-		Lib.current.stage.window.setIcon(icon);
+		openfl.Lib.current.stage.window.setIcon(icon);
 		#end
 
 		#if html5
@@ -121,7 +117,8 @@ class InitState extends MusicBeatState
 		FlxG.keys.preventDefaultKeys = [TAB];
 
 		#if CRASH_HANDLER
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		@:privateAccess
+		openfl.Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, Main.onCrash);
 		#end
 
 		#if DISCORD_ALLOWED
@@ -148,9 +145,9 @@ class InitState extends MusicBeatState
 		}
 
 		#if FREEPLAY
-		MusicBeatState.switchState(new FreeplayState());
+		MusicBeatState.switchState(new states.FreeplayState());
 		#elseif CHARTING
-		MusicBeatState.switchState(new ChartingState());
+		MusicBeatState.switchState(new states.editors.ChartingState());
 		#else
 		if (FlxG.save.data.flashing == null && !FlashingState.leftState)
 		{
