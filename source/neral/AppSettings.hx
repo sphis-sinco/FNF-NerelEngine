@@ -54,6 +54,8 @@ class AppSettingsClass
 		}
 		catch (e)
 		{
+			trace(file_path);
+			trace(Paths.getTextFromFile(file_path));
 			trace(e);
 			settings = default_settings;
 		}
