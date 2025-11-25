@@ -1,5 +1,6 @@
 package neral;
 
+import neral.AppSettings.AppSettingsClass;
 import states.StoryMenuState;
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
