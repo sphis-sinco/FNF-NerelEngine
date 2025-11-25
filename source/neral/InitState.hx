@@ -94,7 +94,7 @@ class InitState extends MusicBeatState
 		#end
 		Mods.loadTopMod();
 
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
+		FlxG.save.bind(Constants.APP_SETTINGS.get('save_name'), CoolUtil.getSavePath());
 		Highscore.load();
 
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
