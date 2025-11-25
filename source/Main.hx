@@ -1,5 +1,6 @@
 package;
 
+import neral.InitState;
 #if android
 import android.content.Context;
 #end
@@ -52,7 +53,7 @@ class Main extends Sprite
 	public static final game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		initialState: TitleState, // initial game state
+		initialState: InitState, // initial game state
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode

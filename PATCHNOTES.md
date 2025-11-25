@@ -1,4 +1,7 @@
 # Neral Alpha 0.1.0
+## Additions
+- Added "InitState" which is the new starting state instead of "TitleState"
+
 ## Changes
 - Removed support for "Português (Brasil)" language (I don't speak it, sorry ;-;)
 - Removed [FreeDesktop](https://www.freedesktop.org/wiki) metadata
