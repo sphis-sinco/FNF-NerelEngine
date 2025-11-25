@@ -1,3 +1,9 @@
 {
-  "save_name": "neral"
+  "save_name": "neral",
+
+  "crash_handler": {
+    "file_prefix": "Neral",
+    "platform": "Github",
+    "url": "https://github.com/sphis-sinco/FNF-NerelEngine"
+  }
 }
