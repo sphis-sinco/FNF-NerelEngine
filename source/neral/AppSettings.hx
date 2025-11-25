@@ -69,4 +69,9 @@ typedef AppSettings =
 			var platform:String;
 			var url:String;
 		};
+	var ?extra_versions:Array<
+		{
+			var name:String;
+			var version:String;
+		}>;
 }
