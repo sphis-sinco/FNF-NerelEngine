@@ -70,8 +70,8 @@
 
 	<!-- Assets -->
 	<assets path="assets/fonts" />
-	<assets path="assets/shared"        exclude="*.ogg" include="assets/shared/data/app" if="web"/>
-	<assets path="assets/shared"        exclude="*.mp3" include="assets/shared/data/app" unless="web"/>
+	<assets path="assets/shared"        exclude="*.ogg" if="web"/>
+	<assets path="assets/shared"        exclude="*.mp3" unless="web"/>
 	<assets path="assets/embed"         exclude="*.ogg" if="web" embed="true"/>
 	<assets path="assets/embed"         exclude="*.mp3" unless="web" embed="true"/>
 	<assets path="assets/videos"        if="VIDEOS_ALLOWED"/>
