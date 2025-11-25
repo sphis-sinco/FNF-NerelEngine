@@ -1,5 +1,6 @@
 package psychlua;
 
+import neral.Constants;
 import flixel.FlxBasic;
 import objects.Character;
 import psychlua.LuaUtils;
@@ -341,6 +342,8 @@ class HScript extends Iris
 		set('buildTarget', LuaUtils.getBuildTarget());
 		set('customSubstate', CustomSubstate.instance);
 		set('customSubstateName', CustomSubstate.name);
+
+		set('constants', Constants);
 
 		set('Function_Stop', LuaUtils.Function_Stop);
 		set('Function_Continue', LuaUtils.Function_Continue);
